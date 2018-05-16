@@ -1,0 +1,115 @@
+{% extends 'myApp/base.html' %}
+{% load static from staticfiles %}
+{% block linkscript %}
+    <link rel="stylesheet" type="text/css" href="{% static 'mine/css/mine.css'%}" />
+{% endblock linkscript %}
+{% block base %}
+<div id="mine">
+    <section class="fixed">
+		<span class="glyphicon glyphicon-user"></span>
+		{% if username %}
+			<p><a href="#">{{username}}</a></p>
+			<p><span class="glyphicon glyphicon-fire"></span><span>等级</span></p>
+		{% else %}
+			<p><a href="{% url 'myApp:login' %}">登录</a></p>
+			<p></span><span></span></p>
+		{% endif %}
+
+		{% if not username %}
+			<a id="regis" href="{% url 'myApp:reg' %}">注册</a>
+		{% endif %}
+		<p><span class="glyphicon glyphicon-heart"></span>商品收藏</p>
+	</section>
+
+    <section class="mine">
+		<p>
+			<span>我的订单</span><a>查看全部订单&gt;</a>
+		</p>
+		<nav id="nav">
+			<ul>
+				<li>
+					<a>
+						<dl>
+							<dt><span class="glyphicon glyphicon-usd"></span></dt>
+							<dd>代付款</dd>
+						</dl>
+					</a>
+				</li>
+				<li>
+					<a>
+						<dl>
+							<dt><span class="glyphicon glyphicon-usd"></span></dt>
+							<dd>代付款</dd>
+						</dl>
+					</a>
+				</li>
+				<li>
+					<a>
+						<dl>
+							<dt><span class="glyphicon glyphicon-usd"></span></dt>
+							<dd>代付款</dd>
+						</dl>
+					</a>
+				</li>
+				<li>
+					<a>
+						<dl>
+							<dt><span class="glyphicon glyphicon-usd"></span></dt>
+							<dd>代付款</dd>
+						</dl>
+					</a>
+				</li>
+			</ul>
+		</nav>
+
+
+		<menu>
+			<ul>
+				<li>
+					<a>
+						<dl>
+							<dt><span class="glyphicon glyphicon-bullhorn"></span></dt>
+							<dd>积分商城</dd>
+						</dl>
+					</a>
+				</li>
+				<li>
+					<a>
+						<dl>
+							<dt><span class="glyphicon glyphicon-bullhorn"></span></dt>
+							<dd>积分商城</dd>
+						</dl>
+					</a>
+				</li>
+				<li>
+					<a>
+						<dl>
+							<dt><span class="glyphicon glyphicon-bullhorn"></span></dt>
+							<dd>积分商城</dd>
+						</dl>
+					</a>
+				</li>
+				<li>
+					<a>
+						<dl>
+							<dt><span class="glyphicon glyphicon-bullhorn"></span></dt>
+							<dd>积分商城</dd>
+						</dl>
+					</a>
+				</li>
+				<li>
+					<a>
+						<dl>
+							<dt><span class="glyphicon glyphicon-bullhorn"></span></dt>
+							<dd>积分商城</dd>
+						</dl>
+					</a>
+				</li>
+			</ul>
+		</menu>
+		{% if username %}
+			<p><a href="{% url 'myApp:dologout' %}">退出当前账号</a></p>
+		{% endif %}
+	</section>
+</div>
+{% endblock base %}

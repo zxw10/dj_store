@@ -1,0 +1,58 @@
+{% extends 'myApp/base.html' %}
+{% load static from staticfiles %}
+{% block title %}
+    购物车
+{% endblock title %}
+{% block linkscript%}
+    <link rel="stylesheet" href="{% static 'cart/css/cart.css' %}">
+    <script src="{% static 'cart/js/cart.js' %}"></script>
+{% endblock linkscript%}
+
+{% block base %}
+<div id="cart">
+   {% if username %}
+        <section class="full">
+            <menu>
+				<ul>
+                    {% for item in cart%}
+                    <li id="{{item.goodsId}}li" class="menuList">
+                        <div class="confirm">
+                            <span class="ischose" goodsid="{{item.goodsId}}">
+                                <span id="{{item.goodsId}}a">
+                                {% ifequal True item.isChoose %}
+                                √
+                                {% endifequal %}
+                                </span>
+                            </span>
+                        </div>
+                        <a href="#">
+                            <img src="{{item.goodsImg}}"/>
+                            <p>{{item.goodsName}}</p>
+                            <span id="{{item.goodsPrice}}price" class="{{productprice}}">{{item.goodsPrice}}￥</span>
+                        </a>
+                        <section>
+                            <button class="subShopping"  ga="{{item.goodsId}}">-</button>
+                            <span id="{{item.goodsId}}">{{item.goodsNum}}</span>
+                            <button class="addShopping"  ga="{{item.goodsId}}">+</button>
+                        </section>
+                    </li>
+                    {% endfor %}
+
+					<li class="payTheBill">
+						<div class="confirm"><span><span>
+                            {% if trueFlag %}
+                            √
+                            {% endif %}
+                        </span></span></div>
+						<p><span>全选</span><span>共计:</span><span id="totalPrice">总价:{{total}}</span></p>
+						<a id="ok">选好了</a>
+					</li>
+				</ul>
+			</menu>
+		</section>
+        </section>
+    {% else %}
+        <h1>你还没有登录  <a href="/login/">请登录</a></h1>
+    {% endif %}
+</div>
+{% endblock base %}

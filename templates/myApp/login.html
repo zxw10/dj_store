@@ -1,0 +1,18 @@
+{% extends 'myApp/base.html' %}
+{% load static from staticfiles %}
+{% block linkscript %}
+    <link rel="stylesheet" type="text/css" href="{% static 'login/css/login.css'%}" />
+<script src="{% static 'login/js/login.js' %}"></script>
+{% endblock linkscript %}
+{% block base %}
+<div id="login">
+    <p> <a href="{% url 'myApp:mine' %}">返回</a></p>
+    <form action="{% url 'myApp:dologin' %}" method="post">
+        <p>用户名 <input type="number" required="required"  name="userAccount"><span>输入正确的用户名和密码</span></p>
+        <p>密码 <input type="password" name="userPass"></p>
+        <p><button type="button" onclick="loginCheck()">点击</button></p>
+        <p id="errinfo"></p>
+    </form>
+</div>
+<!--pattern="^[1][3-8][0-9]$"-->
+{% endblock %}
